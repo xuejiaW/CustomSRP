@@ -34,6 +34,14 @@ public partial class CameraRenderer
         m_RenderContext.DrawRenderers(m_CullingResults, ref drawingSettings, ref filteringSettings);
     }
 
+    partial void PrepareForSceneWindow()
+    {
+        if (m_Camera.cameraType == CameraType.SceneView)
+        {
+            ScriptableRenderContext.EmitWorldGeometryForSceneView(m_Camera);
+        }
+    }
+
     partial void DrawGizmos()
     {
         if (!Handles.ShouldRenderGizmos()) return;

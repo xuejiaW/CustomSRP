@@ -12,6 +12,7 @@ public partial class CameraRenderer
 
     private static ShaderTagId s_UnlitShaderTagId = new("SRPDefaultUnlit");
 
+    partial void PrepareForSceneWindow();
     partial void DrawUnSupportedShadersGeometry();
     partial void DrawGizmos();
 
@@ -19,6 +20,8 @@ public partial class CameraRenderer
     {
         m_RenderContext = renderContext;
         m_Camera = camera;
+        
+        PrepareForSceneWindow();
 
         if (!Cull()) return;
 
