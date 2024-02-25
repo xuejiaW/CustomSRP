@@ -15,12 +15,14 @@ public partial class CameraRenderer
     partial void PrepareForSceneWindow();
     partial void DrawUnSupportedShadersGeometry();
     partial void DrawGizmos();
+    partial void PrepareBuffer();
 
     public void Render(ScriptableRenderContext renderContext, Camera camera)
     {
         m_RenderContext = renderContext;
         m_Camera = camera;
-        
+       
+        PrepareBuffer();
         PrepareForSceneWindow();
 
         if (!Cull()) return;

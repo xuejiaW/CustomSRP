@@ -45,8 +45,10 @@ public partial class CameraRenderer
     partial void DrawGizmos()
     {
         if (!Handles.ShouldRenderGizmos()) return;
-        m_RenderContext.DrawGizmos(m_Camera,GizmoSubset.PreImageEffects);
-        m_RenderContext.DrawGizmos(m_Camera,GizmoSubset.PostImageEffects);
+        m_RenderContext.DrawGizmos(m_Camera, GizmoSubset.PreImageEffects);
+        m_RenderContext.DrawGizmos(m_Camera, GizmoSubset.PostImageEffects);
     }
+
+    partial void PrepareBuffer() { m_Buffer.name = m_Camera.name; }
 #endif
 }
