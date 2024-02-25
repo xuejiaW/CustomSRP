@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -31,6 +32,13 @@ public partial class CameraRenderer
         var filteringSettings = FilteringSettings.defaultValue;
 
         m_RenderContext.DrawRenderers(m_CullingResults, ref drawingSettings, ref filteringSettings);
+    }
+
+    partial void DrawGizmos()
+    {
+        if (!Handles.ShouldRenderGizmos()) return;
+        m_RenderContext.DrawGizmos(m_Camera,GizmoSubset.PreImageEffects);
+        m_RenderContext.DrawGizmos(m_Camera,GizmoSubset.PostImageEffects);
     }
 #endif
 }

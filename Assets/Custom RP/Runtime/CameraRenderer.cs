@@ -13,6 +13,7 @@ public partial class CameraRenderer
     private static ShaderTagId s_UnlitShaderTagId = new("SRPDefaultUnlit");
 
     partial void DrawUnSupportedShadersGeometry();
+    partial void DrawGizmos();
 
     public void Render(ScriptableRenderContext renderContext, Camera camera)
     {
@@ -24,6 +25,7 @@ public partial class CameraRenderer
         Setup();
         DrawVisibleGeometry();
         DrawUnSupportedShadersGeometry();
+        DrawGizmos();
         Submit();
     }
 
