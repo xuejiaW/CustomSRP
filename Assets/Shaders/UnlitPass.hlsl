@@ -4,7 +4,9 @@
 
 #include "../Custom RP/ShaderLibrary/Common.hlsl"
 
-float4 m_BaseColor;
+CBUFFER_START(UnityPerMaterial)
+    float4 m_BaseColor;
+CBUFFER_END
 
 float4 UnlitPassVertex(float3 positionOS: POSITION) : SV_POSITION {
     float3 positionWS = TransformObjectToWorld(positionOS.xyz);
