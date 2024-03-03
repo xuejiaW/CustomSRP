@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CustomUnlitTexturetRed
-  m_Shader: {fileID: 4800000, guid: 10c857ed9129d1543aa70d782b56e332, type: 3}
+  m_Name: CustomUnlitTextureCutoffRed
+  m_Shader: {fileID: 4800000, guid: 9aabc97ef9f4cd242b5d7814e3a096e0, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -81,6 +81,7 @@ Material:
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
+    - m_Cutoff: 0.5
     - m_DstBlend: 10
     - m_SrcBlend: 5
     - m_ZWrite: 0
