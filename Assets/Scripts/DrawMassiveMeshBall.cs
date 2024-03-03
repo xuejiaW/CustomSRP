@@ -17,8 +17,11 @@ public class DrawMassiveMeshBall : MonoBehaviour
     {
         for (int i = 0; i != m_Matrices.Length; ++i)
         {
-            m_Matrices[i] = Matrix4x4.TRS(Random.insideUnitSphere * 10f, Quaternion.identity, Vector3.one);
-            m_BaseColors[i] = new Vector4(Random.value, Random.value, Random.value, 1);
+            m_Matrices[i] = Matrix4x4.TRS(Random.insideUnitSphere * 10f,
+                                          Quaternion.Euler(Random.value * 360f, Random.value * 360f,
+                                                           Random.value * 360f),
+                                          Vector3.one * Random.Range(0.5f, 1.0f));
+            m_BaseColors[i] = new Vector4(Random.value, Random.value, Random.value, Random.value);
         }
     }
 
