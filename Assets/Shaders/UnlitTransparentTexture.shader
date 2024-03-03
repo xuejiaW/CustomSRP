@@ -1,8 +1,9 @@
-Shader "Custom RP/Unlit"
+Shader "Custom RP/UnlitTexture"
 {
 
     Properties
     {
+        m_BaseMap("Texture", 2D) = "white" {}
         m_BaseColor("Color", Color) = (1.0, 1.0, 1.0, 1.0)
         [Enum(UnityEngine.Rendering.BlendMode)] m_SrcBlend("Src Blend", Float) = 1
         [Enum(UnityEngine.Rendering.BlendMode)] m_DstBlend("Dst Blend", Float) = 0
@@ -20,7 +21,7 @@ Shader "Custom RP/Unlit"
             #pragma  multi_compile_instancing
             #pragma vertex UnlitPassVertex
             #pragma fragment UnlitPassFragment
-            #include "UnlitPass.hlsl"
+            #include "UnlitTransparentTexturePass.hlsl"
             ENDHLSL
         }
     }
