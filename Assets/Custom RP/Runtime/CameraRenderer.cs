@@ -11,13 +11,15 @@ public partial class CameraRenderer
     private CullingResults m_CullingResults = default;
 
     private static ShaderTagId s_UnlitShaderTagId = new("SRPDefaultUnlit");
+    private static ShaderTagId s_LitShaderTagId = new("CustomLit");
 
     partial void PrepareForSceneWindow();
     partial void DrawUnSupportedShadersGeometry();
     partial void DrawGizmos();
     partial void PrepareBuffer();
 
-    public void Render(ScriptableRenderContext renderContext, Camera camera,bool useDynamicBatching, bool useGPUInstancing)
+    public void Render(ScriptableRenderContext renderContext, Camera camera, bool useDynamicBatching,
+                       bool useGPUInstancing)
     {
         m_RenderContext = renderContext;
         m_Camera = camera;
@@ -53,6 +55,8 @@ public partial class CameraRenderer
             enableDynamicBatching = useDynamicBatching,
             enableInstancing = useGPUInstancing
         };
+        drawingSettings.SetShaderPassName(1, s_LitShaderTagId);
+
         var filteringSettings = new FilteringSettings(RenderQueueRange.opaque);
         m_RenderContext.DrawRenderers(m_CullingResults, ref drawingSettings, ref filteringSettings);
 
