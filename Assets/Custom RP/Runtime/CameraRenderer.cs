@@ -13,6 +13,8 @@ public partial class CameraRenderer
     private static ShaderTagId s_UnlitShaderTagId = new("SRPDefaultUnlit");
     private static ShaderTagId s_LitShaderTagId = new("CustomLit");
 
+    private Lighting m_Lighting = new Lighting();
+
     partial void PrepareForSceneWindow();
     partial void DrawUnSupportedShadersGeometry();
     partial void DrawGizmos();
@@ -30,6 +32,7 @@ public partial class CameraRenderer
         if (!Cull()) return;
 
         Setup();
+        m_Lighting.Setup(renderContext);
         DrawVisibleGeometry(useDynamicBatching, useGPUInstancing);
         DrawUnSupportedShadersGeometry();
         DrawGizmos();
