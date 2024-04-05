@@ -10,7 +10,11 @@ float3 GetLighting(Surface surface, Light light) {
 }
 
 float3 GetLighting(Surface surface) {
-    return GetLighting(surface, GetDirectionLight());
+    float3 color = 0.0;
+    for (int i = 0; i != GetDirectionalLightCount(); ++i) {
+        color += GetLighting(surface, GetDirectionLight(i));
+    }
+    return color;
 }
 
 #endif
